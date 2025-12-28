@@ -1,6 +1,4 @@
 
-      <!-- The user's original HTML code is placed here -->
-      
       
         
           <meta charset="UTF-8">
@@ -259,6 +257,10 @@
                 color: #ef4444;
               } /* red-500 */
             }
+            .locked-card .card-image {
+              filter: blur(4px);
+              transform: scale(1.1);
+            }
           </style>
         
         
@@ -274,7 +276,6 @@
           </div>
           <div id="app-container" class="hidden min-h-screen container mx-auto p-4 md:p-8">
             <div class="w-full flex justify-end items-center mb-4">
-              <!-- LOTTERY BUTTON -->
               <button id="lotteryBtn" class="shimmer-btn rounded-md px-4 py-2 text-sm mr-4">
                 <i class="fas fa-star mr-2"></i>LOTTERY
               </button>
@@ -283,23 +284,41 @@
               </button>
             </div>
             <div id="live-feed-section" class="mb-8">
-              <!-- Text changed from TOP WINNERS NOW to MY STUDENTS -->
-              <h3 class="text-center text-xl mb-4 tracking-widest">
+              <h3 class="text-center text-xl mb-4 tracking-widest flex items-center justify-center">
                 // MY STUDENTS //
+                <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded ml-2 animate-pulse">LIVE</span>
               </h3>
               <div id="live-feed-container" class="h-24 bg-black/30 border border-green-800 rounded-md p-2 flex items-center space-x-4 overflow-x-hidden"></div>
             </div>
             <div id="signals-section" class="">
               <h2 class="text-3xl md:text-4xl text-center mb-10 tracking-widest">
-                // AVAILABLE AI SIGNALS //
+                // AI SIGNALS //
               </h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="aviator">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBdX8SuaC1Ws7ZYuCVQstQ4qRi9A_3SWujg&amp;s" alt="Aviator AI Predictor" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/39ff14?text=Aviator';">
+              <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <div class="signal-card locked-card bg-[#0d0d0d] border border-yellow-700 rounded-lg overflow-hidden flex flex-col" data-card-type="vip" data-game="vip">
+                  <div class="w-full h-48 overflow-hidden relative">
+                    <img src="" alt="" class="card-image w-full h-full object-cover transition-all duration-300">
+                    <div class="banner-container absolute inset-0 flex items-center justify-center">
+                      <div class="absolute w-[150%] bg-red-600 text-white text-center font-bold py-2 -rotate-12 text-sm shadow-lg">
+                        NEED ANOTHER ACCESS CODE
+                      </div>
+                    </div>
+                  </div>
                   <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow">
-                      Aviator AI PREDICTOR
-                    </h3>
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow text-yellow-300" style="text-shadow: 0 0 8px #f6e05e"></h3>
+                    <p id="stats-vip" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
+                      // Loading data...
+                    </p>
+                    <button class="w-full mt-auto bg-gray-600 text-gray-400 px-4 py-2 cursor-not-allowed" disabled="">
+                      ACTIVATE
+                    </button>
+                  </div>
+                </div>
+
+                <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="aviator">
+                  <img src="" alt="" class="card-image w-full h-48 object-cover">
+                  <div class="p-4 flex flex-col flex-grow text-center">
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow"></h3>
                     <p id="stats-aviator" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
                       // Loading data...
                     </p>
@@ -308,12 +327,11 @@
                     </button>
                   </div>
                 </div>
+
                 <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="mines">
-                  <img src="https://rotativka.com/en/wp-content/uploads/sites/3/2021/06/Mines-Demo.jpg" alt="Mines AI Predictor" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/39ff14?text=Mines';">
+                  <img src="" alt="" class="card-image w-full h-48 object-cover">
                   <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow">
-                      Mines AI PREDICTOR
-                    </h3>
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow"></h3>
                     <p id="stats-mines" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
                       // Loading data...
                     </p>
@@ -322,12 +340,11 @@
                     </button>
                   </div>
                 </div>
+
                 <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="penalty">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThYP5CGxc52hWd4ToMHI8MIJhun5BEjHh5LQ&amp;s" alt="Penalty AI Predictor" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/39ff14?text=Penalty';">
+                  <img src="" alt="" class="card-image w-full h-48 object-cover">
                   <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow">
-                      Penalty AI PREDICTOR
-                    </h3>
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow"></h3>
                     <p id="stats-penalty" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
                       // Loading data...
                     </p>
@@ -336,12 +353,11 @@
                     </button>
                   </div>
                 </div>
+
                 <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="apple">
-                  <img src="https://play-lh.googleusercontent.com/ezAY-TvV3PlhYWLs8k8czRjWWSdBwFtPrw72fNpS8p6wByC0xBG-Dgt0K5ojieZXrg" alt="Apple of Fortune AI Predictor" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/39ff14?text=Apple';">
+                  <img src="" alt="" class="card-image w-full h-48 object-cover">
                   <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow">
-                      Apple of Fortune AI PREDICTOR
-                    </h3>
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow"></h3>
                     <p id="stats-apple" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
                       // Loading data...
                     </p>
@@ -350,12 +366,11 @@
                     </button>
                   </div>
                 </div>
+
                 <div class="signal-card bg-[#0d0d0d] border border-green-700 rounded-lg overflow-hidden flex flex-col" data-game="chicken">
-                  <img src="https://cdn6.aptoide.com/imgs/1/0/2/1023a04c18a7a91673200703af12a58f_icon.png" alt="Chicken Road AI Predictor" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/39ff14?text=Chicken';">
+                  <img src="" alt="" class="card-image w-full h-48 object-cover">
                   <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow">
-                      Chicken Road AI PREDICTOR
-                    </h3>
+                    <h3 class="card-title text-lg font-bold mb-2 flex-grow"></h3>
                     <p id="stats-chicken" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
                       // Loading data...
                     </p>
@@ -364,46 +379,115 @@
                     </button>
                   </div>
                 </div>
-                <div class="signal-card locked-card bg-[#0d0d0d] border border-yellow-700 rounded-lg overflow-hidden flex flex-col">
-                  <div class="w-full h-48 bg-black flex items-center justify-center overflow-hidden relative">
-                    <div class="absolute w-[150%] bg-red-600 text-white text-center font-bold py-2 -rotate-12 text-sm shadow-lg">
-                      NEED ANOTHER ACCESS CODE
-                    </div>
-                  </div>
-                  <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow text-yellow-300" style="text-shadow: 0 0 8px #f6e05e">
-                      VIP AI PREDICTOR
-                    </h3>
-                    <p id="stats-vip1" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
-                      // Loading data...
-                    </p>
-                    <button class="w-full mt-auto bg-gray-600 text-gray-400 px-4 py-2 cursor-not-allowed" disabled="">
-                      ACTIVATE
-                    </button>
-                  </div>
-                </div>
-                <div class="signal-card locked-card bg-[#0d0d0d] border border-yellow-700 rounded-lg overflow-hidden flex flex-col">
-                  <div class="w-full h-48 bg-black flex items-center justify-center overflow-hidden relative">
-                    <div class="absolute w-[150%] bg-red-600 text-white text-center font-bold py-2 -rotate-12 text-sm shadow-lg">
-                      NEED ANOTHER ACCESS CODE
-                    </div>
-                  </div>
-                  <div class="p-4 flex flex-col flex-grow text-center">
-                    <h3 class="text-lg font-bold mb-2 flex-grow text-yellow-300" style="text-shadow: 0 0 8px #f6e05e">
-                      VIP AI PREDICTOR
-                    </h3>
-                    <p id="stats-vip2" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
-                      // Loading data...
-                    </p>
-                    <button class="w-full mt-auto bg-gray-600 text-gray-400 px-4 py-2 cursor-not-allowed" disabled="">
-                      ACTIVATE
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
             <div id="game-view" class="hidden">
-              <!-- AVIATOR GAME SCREEN -->
+              <div id="game-screen-vip" class="game-screen hidden flex-col items-center justify-center">
+                <div class="w-full relative min-h-[60vh] flex flex-col items-center justify-center bg-black/30 border border-yellow-500 rounded-md p-8 pt-16 pb-8 text-center">
+                  <div class="absolute top-4 left-4">
+                    <button class="back-to-signals-btn text-yellow-400 hover:text-yellow-300 transition-colors bg-transparent border border-yellow-400 rounded px-3 py-1 text-sm hover:bg-yellow-400 hover:text-black">
+                      &lt;-- Back
+                    </button>
+                  </div>
+                  <h2 class="game-title text-3xl sm:text-4xl text-yellow-300 mb-6 font-bold" style="text-shadow: 0 0 8px #f6e05e"></h2>
+                  <div class="max-w-xl text-lg text-gray-300 space-y-4">
+                    <p>
+                      Congratulations on getting the rarest predictor, my
+                      friend!
+                    </p>
+                    <p>
+                      The predictor you just received uses the latest AI
+                      technologies to forecast sports bets!
+                    </p>
+                    <p>
+                      Now, thanks to AI, you can predict the winner in sports
+                      events with 99% accuracy!
+                    </p>
+                    <p>
+                      We use the newest AI, which is only available to us in
+                      private access.
+                    </p>
+                    <p class="font-bold text-green-400">
+                      Write to me so I can give you predictions with our AI!
+                    </p>
+                  </div>
+                  <a id="vip-send-message-link" href="#" class="mt-8 bg-green-600 text-black px-8 py-3 text-lg hover:bg-green-500 transition-all duration-300 active:scale-95 rounded-md font-bold">
+                    SEND MESSAGE
+                  </a>
+                </div>
+              </div>
+
+              <div id="game-screen-slot" class="game-screen hidden flex-col items-center justify-center">
+                <div class="video-tutorial-section w-full p-4">
+                  <div class="flex justify-start w-full mb-4">
+                    <button class="back-to-signals-btn text-yellow-400 hover:text-yellow-300 transition-colors bg-transparent border border-yellow-400 rounded px-3 py-1 text-sm hover:bg-yellow-400 hover:text-black">
+                      &lt;-- Back
+                    </button>
+                  </div>
+                  <h3 class="text-3xl text-center text-cyan-300 mb-6">
+                    First, find a "Slot" game
+                  </h3>
+                  <div class="flex flex-col md:flex-row gap-6 justify-center items-start">
+                    <div class="w-full md:w-1/2">
+                      <h4 class="text-center mb-2 text-lg">
+                        HOW TO FIND "SLOTS" IN WEB
+                      </h4>
+                      <div class="aspect-video bg-black border border-cyan-700 rounded-lg overflow-hidden">
+                        <iframe class="w-full h-full" id="slot-find-game-web-iframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                      <h4 class="text-center mb-2 text-lg">
+                        HOW TO FIND "SLOTS" IN APP
+                      </h4>
+                      <div class="aspect-video bg-black border border-cyan-700 rounded-lg overflow-hidden">
+                        <iframe class="w-full h-full" id="slot-find-game-app-iframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center mt-8">
+                    <button class="i-found-game-btn bg-green-600 text-black px-8 py-3 text-lg hover:bg-green-500 transition-all duration-300 active:scale-95 rounded-md font-bold">
+                      I FOUND THE GAME
+                    </button>
+                  </div>
+                </div>
+
+                <div class="predictor-section hidden w-full relative min-h-[60vh] flex-col items-center justify-center bg-black/30 border border-green-800 rounded-md p-4 pt-16 pb-8">
+                  <div class="absolute top-4 left-4">
+                    <button class="back-to-signals-btn text-yellow-400 hover:text-yellow-300 transition-colors bg-transparent border border-yellow-400 rounded px-3 py-1 text-sm hover:bg-yellow-400 hover:text-black">
+                      &lt;-- Back
+                    </button>
+                  </div>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
+                  <div class="mb-2 py-4 flex-grow flex items-center justify-center">
+                    <p id="slot-signal-display" class="text-3xl sm:text-4xl md:text-5xl font-mono text-center text-white transition-colors duration-500 px-4">
+                      SPIN
+                      <span id="slot-number" class="slot-number text-yellow-400" style="text-shadow: 0 0 15px rgba(250, 204, 21, 0.7)">#</span>
+                      TIMES
+                    </p>
+                  </div>
+
+                  <p id="slot-bet-suggestion" class="bet-suggestion-text text-center text-yellow-400 h-8 my-6 text-sm sm:text-xl font-bold px-2"></p>
+
+                  <div id="slot-actions-initial" class="slot-actions-initial flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
+                    <button id="slot-get-bet-btn" class="slot-get-bet-btn flex-1 bg-green-600 text-black px-4 py-2 text-base hover:bg-green-500 transition-all duration-300 active:scale-95 rounded-md">
+                      Get Bet Size
+                    </button>
+                    <button id="slot-get-signal-btn" class="slot-get-signal-btn flex-1 px-4 py-2 text-base transition-all duration-300 active:scale-95 rounded-md btn-disabled" disabled="">
+                      Get Signal
+                    </button>
+                  </div>
+
+                  <button id="slot-get-another-btn" class="slot-get-another-btn hidden w-full max-w-md bg-yellow-500 text-black px-4 py-2 text-base hover:bg-yellow-400 transition-all duration-300 active:scale-95 rounded-md">
+                    GET ANOTHER SIGNAL
+                  </button>
+
+                  <div id="slot-console" class="game-console w-full max-w-md border rounded-md mt-6 p-2 font-mono text-xs overflow-y-auto">
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+
               <div id="game-screen-aviator" class="game-screen hidden flex-col items-center justify-center">
                 <div class="video-tutorial-section w-full p-4">
                   <div class="flex justify-start w-full mb-4">
@@ -445,13 +529,11 @@
                     </button>
                   </div>
                   <div class="absolute top-4 right-4 flex flex-col sm:flex-row gap-2">
-                    <button class="open-video-btn text-cyan-400 hover:text-cyan-300 transition-colors bg-transparent border border-cyan-400 rounded px-3 py-1 text-sm hover:bg-cyan-400 hover:text-black" data-videos-key="howToUse" data-game-key="aviator">
-                      HOW TO USE
+                    <button class="open-video-btn text-orange-400 hover:text-orange-300 bg-transparent border border-orange-400 rounded px-4 py-2 text-base hover:bg-orange-400 hover:text-black font-bold transition-all active:scale-95" data-videos-key="howToUse" data-game-key="aviator">
+                      HOW TO USE PREDICTOR
                     </button>
                   </div>
-                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0">
-                    AVIATOR AI PREDICTOR
-                  </h3>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
                   <div class="mb-2 py-4">
                     <p id="aviator-multiplier" class="text-7xl md:text-9xl font-mono text-center text-white transition-colors duration-500">
                       x1.00
@@ -475,7 +557,6 @@
                 </div>
               </div>
 
-              <!-- MINES GAME SCREEN -->
               <div id="game-screen-mines" class="game-screen hidden flex-col items-center justify-center">
                 <div class="video-tutorial-section w-full p-4">
                   <div class="flex justify-start w-full mb-4">
@@ -515,13 +596,11 @@
                     &lt;-- Back
                   </button>
                   <div class="absolute top-4 right-4 flex flex-col sm:flex-row gap-2">
-                    <button class="open-video-btn text-cyan-400 hover:text-cyan-300 transition-colors bg-transparent border border-cyan-400 rounded px-3 py-1 text-sm hover:bg-cyan-400 hover:text-black" data-videos-key="howToUse" data-game-key="mines">
-                      HOW TO USE
+                    <button class="open-video-btn text-orange-400 hover:text-orange-300 bg-transparent border border-orange-400 rounded px-4 py-2 text-base hover:bg-orange-400 hover:text-black font-bold transition-all active:scale-95" data-videos-key="howToUse" data-game-key="mines">
+                      HOW TO USE PREDICTOR
                     </button>
                   </div>
-                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-6 px-12 sm:px-0 mt-8 sm:mt-0">
-                    MINES AI PREDICTOR
-                  </h3>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-6 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
                   <div class="flex flex-col sm:flex-row gap-6 mb-6 w-full max-w-lg">
                     <div class="relative flex-1" data-select-id="grid-size">
                       <label class="block text-sm text-gray-400 mb-1">Grid Size</label>
@@ -601,7 +680,6 @@
                 </div>
               </div>
 
-              <!-- PENALTY GAME SCREEN -->
               <div id="game-screen-penalty" class="game-screen hidden flex-col items-center justify-center">
                 <div class="video-tutorial-section w-full p-4">
                   <div class="flex justify-start w-full mb-4">
@@ -641,13 +719,11 @@
                     &lt;-- Back
                   </button>
                   <div class="absolute top-4 right-4 flex flex-col sm:flex-row gap-2">
-                    <button class="open-video-btn text-cyan-400 hover:text-cyan-300 transition-colors bg-transparent border border-cyan-400 rounded px-3 py-1 text-sm hover:bg-cyan-400 hover:text-black" data-videos-key="howToUse" data-game-key="penalty">
-                      HOW TO USE
+                    <button class="open-video-btn text-orange-400 hover:text-orange-300 bg-transparent border border-orange-400 rounded px-4 py-2 text-base hover:bg-orange-400 hover:text-black font-bold transition-all active:scale-95" data-videos-key="howToUse" data-game-key="penalty">
+                      HOW TO USE PREDICTOR
                     </button>
                   </div>
-                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-6 px-12 sm:px-0 mt-8 sm:mt-0">
-                    PENALTY AI PREDICTOR
-                  </h3>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-6 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
                   <div class="relative w-full max-w-lg h-64 md:h-80 bg-gray-900/20 border-2 border-gray-600 mb-6">
                     <div class="penalty-gate-post absolute left-0 top-0 w-2 h-full"></div>
                     <div class="penalty-gate-post absolute right-0 top-0 w-2 h-full"></div>
@@ -676,7 +752,6 @@
                 </div>
               </div>
 
-              <!-- APPLE OF FORTUNE GAME SCREEN -->
               <div id="game-screen-apple" class="game-screen hidden flex-col items-center justify-center">
                 <div class="video-tutorial-section w-full p-4">
                   <div class="flex justify-start w-full mb-4">
@@ -716,13 +791,11 @@
                     &lt;-- Back
                   </button>
                   <div class="absolute top-4 right-4 flex flex-col sm:flex-row gap-2">
-                    <button class="open-video-btn text-cyan-400 hover:text-cyan-300 transition-colors bg-transparent border border-cyan-400 rounded px-3 py-1 text-sm hover:bg-cyan-400 hover:text-black" data-videos-key="howToUse" data-game-key="apple">
-                      HOW TO USE
+                    <button class="open-video-btn text-orange-400 hover:text-orange-300 bg-transparent border border-orange-400 rounded px-4 py-2 text-base hover:bg-orange-400 hover:text-black font-bold transition-all active:scale-95" data-videos-key="howToUse" data-game-key="apple">
+                      HOW TO USE PREDICTOR
                     </button>
                   </div>
-                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0">
-                    Apple of Fortune AI PREDICTOR
-                  </h3>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
                   <div class="flex-grow flex items-center justify-center">
                     <p id="apple-signal-display" class="text-9xl font-mono text-center text-white">
                       #
@@ -746,7 +819,6 @@
                 </div>
               </div>
 
-              <!-- CHICKEN ROAD GAME SCREEN -->
               <div id="game-screen-chicken" class="game-screen hidden flex-col items-center justify-center">
                 <div class="video-tutorial-section w-full p-4">
                   <div class="flex justify-start w-full mb-4">
@@ -786,13 +858,11 @@
                     &lt;-- Back
                   </button>
                   <div class="absolute top-4 right-4 flex flex-col sm:flex-row gap-2">
-                    <button class="open-video-btn text-cyan-400 hover:text-cyan-300 transition-colors bg-transparent border border-cyan-400 rounded px-3 py-1 text-sm hover:bg-cyan-400 hover:text-black" data-videos-key="howToUse" data-game-key="chicken">
-                      HOW TO USE
+                    <button class="open-video-btn text-orange-400 hover:text-orange-300 bg-transparent border border-orange-400 rounded px-4 py-2 text-base hover:bg-orange-400 hover:text-black font-bold transition-all active:scale-95" data-videos-key="howToUse" data-game-key="chicken">
+                      HOW TO USE PREDICTOR
                     </button>
                   </div>
-                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0">
-                    Chicken Road AI PREDICTOR
-                  </h3>
+                  <h3 class="game-title text-3xl sm:text-4xl text-center mb-4 px-12 sm:px-0 mt-8 sm:mt-0"></h3>
                   <div class="w-full flex justify-center mb-4">
                     <div class="relative w-full max-w-xs" data-select-id="chicken-difficulty">
                       <label class="block text-sm text-gray-400 mb-1 text-center">Difficulty</label>
@@ -879,7 +949,6 @@
             </div>
           </div>
 
-          <!-- PROMO MODAL -->
           <div id="promoModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center p-4 hidden z-[80]">
             <div class="bg-[#0d0d0d] border border-yellow-500 rounded-lg p-6 w-full max-w-lg relative shadow-2xl shadow-yellow-500/30 text-center">
               <button id="closePromoModalBtn" class="absolute top-2 right-3 text-gray-500 hover:text-yellow-400 text-3xl transition-colors">
@@ -900,7 +969,6 @@
             </div>
           </div>
 
-          <!-- LOTTERY MODAL -->
           <div id="lotteryModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center p-4 hidden z-[60]">
             <div class="bg-[#0d0d0d] border border-yellow-500 rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-md sm:max-w-lg md:max-w-xl relative shadow-2xl shadow-yellow-500/30 text-center overflow-hidden">
               <canvas id="confettiCanvas" class="absolute top-0 left-0 w-full h-full pointer-events-none z-20"></canvas>
@@ -940,7 +1008,6 @@
             </div>
           </div>
 
-          <!-- INFO MODAL -->
           <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center p-4 hidden z-[70]">
             <div class="bg-[#0d0d0d] border border-blue-500 rounded-lg p-6 w-full max-w-lg relative shadow-2xl shadow-blue-500/30">
               <button id="closeInfoModalBtn" class="absolute top-2 right-3 text-gray-500 hover:text-blue-400 text-3xl transition-colors">
@@ -1017,202 +1084,279 @@
           <script>
             document.addEventListener("DOMContentLoaded", () => {
               const SCRIPT_BODY = () => {
-                const FEATURE_FLAGS = {
-                  enableBetStep: true,
-                  enableLottery: true,
-                };
-                const prizes = [
-          {
-                    "text": "100$\\nTO YOUR\\nCARD",
-                    "color": "#DAA520",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": true
-          },
-          {
-                    "text": "+50%\\nDEPOSIT\\nBONUS",
-                    "color": "#BE185D",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "VIP\\nPREDICTOR\\nACCESS",
-                    "color": "#0D9488",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "NOTHING",
-                    "color": "#374151",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "PERSONAL\\nSIGNALS\\nFROM ADMIN",
-                    "color": "#DAA520",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": true
-          },
-          {
-                    "text": "+100%\\nDEPOSIT\\nBONUS",
-                    "color": "#9333EA",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "NOTHING",
-                    "color": "#374151",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "SLOT\\nPREDICTOR\\nACCESS",
-                    "color": "#4C1D95",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          },
-          {
-                    "text": "NOTHING",
-                    "color": "#374151",
-                    "textColor": "#FFFFFF",
-                    "animatedBorder": false
-          }
+                
+            const FEATURE_FLAGS = {
+  "enableLottery": true,
+  "enableBetStep": true
+};
+            const prizes = [
+  {
+    "text": "VIP\\nACCESS",
+    "color": "#8B5CF6",
+    "textColor": "#FFFFFF",
+    "animatedBorder": true,
+    "specialCode": "VIP1"
+  },
+  {
+    "text": "+50%\\nBONUS",
+    "color": "#3B82F6",
+    "textColor": "#FFFFFF",
+    "animatedBorder": false,
+    "specialCode": ""
+  },
+  {
+    "text": "100$\\nTO CARD",
+    "color": "#FBBF24",
+    "textColor": "#1F2937",
+    "animatedBorder": true,
+    "specialCode": "CASH"
+  },
+  {
+    "text": "NOTHING",
+    "color": "#4B5563",
+    "textColor": "#E5E7EB",
+    "animatedBorder": false,
+    "specialCode": ""
+  },
+  {
+    "text": "SLOT\\nACCESS",
+    "color": "#EC4899",
+    "textColor": "#FFFFFF",
+    "animatedBorder": true,
+    "specialCode": "SLOT"
+  }
 ];
-                const lotteryCodes = {
-          "9#48": 4
+            const lotteryCodes = {
+  "VIP1": 0,
+  "CASH": 2,
+  "SLOT": 4
 };
-                const CUSTOM_CONFIG = {
-                  currency: "NGN",
-                  minBet: 500,
-                  maxBet: 1500,
-                  winnerMultiplier: 100,
-                };
-                const VIDEO_CONFIG = {
-          "aviator": {
-                    "findGame": [
-                              {
-                                        "title": "HOW TO FIND \"AVIATOR\" IN WEB",
-                                        "url": "https://www.youtube.com/embed/VionWpts3F8"
-                              },
-                              {
-                                        "title": "HOW TO FIND \"AVIATOR\" IN APP",
-                                        "url": "https://youtube.com/embed/qSmuuD4Kmto"
-                              }
-                    ],
-                    "howToUse": [
-                              {
-                                        "title": "",
-                                        "url": "https://www.youtube.com/embed/R9oKm-Yy2h8"
-                              }
-                    ]
-          },
-          "mines": {
-                    "findGame": [
-                              {
-                                        "title": "HOW TO FIND \"MINES\" IN WEB",
-                                        "url": "https://youtube.com/embed/lIZc1X4eAlg"
-                              },
-                              {
-                                        "title": "HOW TO FIND \"MINES\" IN APP",
-                                        "url": "https://youtube.com/embed/kxK2AmXTbtk"
-                              }
-                    ],
-                    "howToUse": [
-                              {
-                                        "title": "",
-                                        "url": "https://www.youtube.com/embed/YnbZbhfRpIo"
-                              }
-                    ]
-          },
-          "penalty": {
-                    "findGame": [
-                              {
-                                        "title": "HOW TO FIND \"PENALTY\" IN WEB",
-                                        "url": "https://youtube.com/embed/ztTUO40WokI"
-                              },
-                              {
-                                        "title": "HOW TO FIND \"PENALTY\" IN APP",
-                                        "url": "https://youtube.com/embed/plJJXi3XWes"
-                              }
-                    ],
-                    "howToUse": [
-                              {
-                                        "title": "",
-                                        "url": "https://www.youtube.com/embed/JSOkZujumoM"
-                              }
-                    ]
-          },
-          "apple": {
-                    "findGame": [
-                              {
-                                        "title": "HOW TO FIND \"APPLE OF FORTUNE\" IN WEB",
-                                        "url": "https://youtube.com/embed/-RTJcxOE82U"
-                              },
-                              {
-                                        "title": "HOW TO FIND \"APPLE OF FORTUNE\" IN APP",
-                                        "url": "https://youtube.com/embed/zE4dHLHK9Mo"
-                              }
-                    ],
-                    "howToUse": [
-                              {
-                                        "title": "",
-                                        "url": "https://www.youtube.com/embed/5qRmvocIM8Q"
-                              }
-                    ]
-          },
-          "chicken": {
-                    "findGame": [
-                              {
-                                        "title": "HOW TO FIND \"CHICKEN ROAD\" IN WEB",
-                                        "url": "https://youtube.com/embed/zMTKdBYz64M"
-                              },
-                              {
-                                        "title": "HOW TO FIND \"CHICKEN ROAD\" IN APP",
-                                        "url": "https://youtube.com/embed/FpyFq-QMczo"
-                              }
-                    ],
-                    "howToUse": [
-                              {
-                                        "title": "",
-                                        "url": "https://www.youtube.com/embed/7pu_wBdoxwg"
-                              }
-                    ]
-          }
+            const CUSTOM_CONFIG = {
+  "currency": "USD",
+  "minBet": "5",
+  "maxBet": "15",
+  "winnerMultiplier": "1",
+  "vipLink": "#"
 };
-                const setFindGameVideos = () => {
-                  const games = [
-                    "aviator",
-                    "mines",
-                    "penalty",
-                    "apple",
-                    "chicken",
-                  ];
-                  games.forEach((game) => {
-                    if (VIDEO_CONFIG[game] && VIDEO_CONFIG[game].findGame) {
-                      const webIframe = document.getElementById(
-                        `${game}-find-game-web-iframe`
-                      );
-                      const appIframe = document.getElementById(
-                        `${game}-find-game-app-iframe`
-                      );
+            const CARDS_CONFIG = [
+  {
+    "id": "vip",
+    "title": "VIP AI PREDICTOR",
+    "image": "https://iili.io/KOce6qG.png",
+    "showFindGame": true
+  },
+  {
+    "id": "aviator",
+    "title": "Aviator AI PREDICTOR",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBdX8SuaC1Ws7ZYuCVQstQ4qRi9A_3SWujg&s",
+    "showFindGame": true
+  },
+  {
+    "id": "mines",
+    "title": "Mines AI PREDICTOR",
+    "image": "https://rotativka.com/en/wp-content/uploads/sites/3/2021/06/Mines-Demo.jpg",
+    "showFindGame": true
+  },
+  {
+    "id": "penalty",
+    "title": "Penalty AI PREDICTOR",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThYP5CGxc52hWd4ToMHI8MIJhun5BEjHh5LQ&s",
+    "showFindGame": true
+  },
+  {
+    "id": "apple",
+    "title": "Apple of Fortune AI PREDICTOR",
+    "image": "https://play-lh.googleusercontent.com/ezAY-TvV3PlhYWLs8k8czRjWWSdBwFtPrw72fNpS8p6wByC0xBG-Dgt0K5ojieZXrg",
+    "showFindGame": true
+  },
+  {
+    "id": "chicken",
+    "title": "Chicken Road AI PREDICTOR",
+    "image": "https://cdn6.aptoide.com/imgs/1/0/2/1023a04c18a7a91673200703af12a58f_icon.png",
+    "showFindGame": true
+  },
+  {
+    "id": "slot-0",
+    "title": "MEGA SLOT GAME",
+    "image": "https://i.ibb.co/37R6F37/slot1.png",
+    "showFindGame": false
+  },
+  {
+    "id": "slot-1",
+    "title": "ANOTHER SLOT",
+    "image": "https://i.ibb.co/Vvz1D1M/slot2.png",
+    "showFindGame": false
+  }
+];
+            const VIDEO_CONFIG = {
+  "aviator": {
+    "findGame": [
+      {
+        "url": "https://www.youtube.com/embed/VionWpts3F8"
+      },
+      {
+        "url": "https://youtube.com/embed/qSmuuD4Kmto"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/R9oKm-Yy2h8"
+      }
+    ]
+  },
+  "mines": {
+    "findGame": [
+      {
+        "url": "https://youtube.com/embed/lIZc1X4eAlg"
+      },
+      {
+        "url": "https://youtube.com/embed/kxK2AmXTbtk"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/YnbZbhfRpIo"
+      }
+    ]
+  },
+  "penalty": {
+    "findGame": [
+      {
+        "url": "https://youtube.com/embed/ztTUO40WokI"
+      },
+      {
+        "url": "https://youtube.com/embed/plJJXi3XWes"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/JSOkZujumoM"
+      }
+    ]
+  },
+  "apple": {
+    "findGame": [
+      {
+        "url": "https://youtube.com/embed/-RTJcxOE82U"
+      },
+      {
+        "url": "https://youtube.com/embed/zE4dHLHK9Mo"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/5qRmvocIM8Q"
+      }
+    ]
+  },
+  "chicken": {
+    "findGame": [
+      {
+        "url": "https://youtube.com/embed/zMTKdBYz64M"
+      },
+      {
+        "url": "https://youtube.com/embed/FpyFq-QMczo"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/7pu_wBdoxwg"
+      }
+    ]
+  },
+  "slot": {
+    "findGame": [
+      {
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      {
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      }
+    ],
+    "howToUse": [
+      {
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      }
+    ]
+  }
+};
+          
 
-                      if (webIframe && VIDEO_CONFIG[game].findGame[0]) {
-                        webIframe.src = VIDEO_CONFIG[game].findGame[0].url;
-                      }
-                      if (appIframe && VIDEO_CONFIG[game].findGame[1]) {
-                        appIframe.src = VIDEO_CONFIG[game].findGame[1].url;
+                function generateAndInsertSlotCards() {
+                  const slotConfigs = CARDS_CONFIG.filter((c) =>
+                    c.id.startsWith("slot-")
+                  );
+                  if (slotConfigs.length === 0) return;
+
+                  let slotsHtml = "";
+                  slotConfigs.forEach((slot, index) => {
+                    slotsHtml += `
+                        <div class="signal-card locked-card bg-[#0d0d0d] border border-fuchsia-500 rounded-lg overflow-hidden flex flex-col" data-card-type="slot" data-game="${slot.id}">
+                          <div class="w-full h-48 overflow-hidden relative">
+                            <img src="${slot.image}" alt="${slot.title}" class="card-image w-full h-full object-cover transition-all duration-300"/>
+                            <div class="banner-container absolute inset-0 flex items-center justify-center">
+                              <div class="absolute w-[150%] bg-fuchsia-600 text-white text-center font-bold py-2 -rotate-12 text-sm shadow-lg">
+                                NEED ANOTHER ACCESS CODE
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-4 flex flex-col flex-grow text-center">
+                            <h3 class="card-title text-lg font-bold mb-2 flex-grow text-fuchsia-300" style="text-shadow: 0 0 8px #d946ef">
+                              ${slot.title}
+                            </h3>
+                            <p id="stats-slot-${index}" class="text-sm text-gray-400 mb-3 font-mono leading-tight">
+                              // Loading data...
+                            </p>
+                            <button class="w-full mt-auto bg-gray-600 text-gray-400 px-4 py-2 cursor-not-allowed" disabled>
+                              ACTIVATE
+                            </button>
+                          </div>
+                        </div>
+                      `;
+                  });
+
+                  const vipCard = document.querySelector(
+                    '[data-card-type="vip"]'
+                  );
+                  if (vipCard) {
+                    vipCard.insertAdjacentHTML("afterend", slotsHtml);
+                  }
+                }
+
+                function applyCardConfigs() {
+                  const staticConfigs = CARDS_CONFIG.filter(
+                    (c) => !c.id.startsWith("slot-")
+                  );
+
+                  staticConfigs.forEach((config) => {
+                    const card = document.querySelector(
+                      `.signal-card[data-game="${config.id}"]`
+                    );
+                    if (card) {
+                      const titleEl = card.querySelector(".card-title");
+                      const imageEl = card.querySelector(".card-image");
+                      if (titleEl) titleEl.textContent = config.title;
+                      if (imageEl) {
+                        imageEl.src = config.image;
+                        imageEl.alt = config.title;
                       }
                     }
                   });
-                };
 
-                setFindGameVideos();
-                // Text for "TOP WINNERS NOW" is changed here
+                  const vipLink = document.getElementById(
+                    "vip-send-message-link"
+                  );
+                  if (vipLink) {
+                    vipLink.href = CUSTOM_CONFIG.vipLink;
+                  }
+                }
+
                 const T = {
                   pageTitle: "AI PREDICTOR",
                   mainTitle: "AI PREDICTOR",
                   mainButton: "GET AI SIGNALS",
                   topWinners: "// MY STUDENTS //",
-                  availableSignals: "// AVAILABLE AI SIGNALS //",
+                  availableSignals: "// AI SIGNALS //",
                   logoutButton: "Logout",
                   activateButton: "ACTIVATE",
                   backButton: "<-- Back",
@@ -1220,7 +1364,7 @@
                   getSignalButton: "Get Signal",
                   getAnotherButton: "GET ANOTHER SIGNAL",
                   startNewGame: "Start New Game",
-                  howToUse: "HOW TO USE",
+                  howToUse: "HOW TO USE PREDICTOR",
                   howToFindGame: "HOW TO FIND GAME",
                   modalCodesAvailable: "// 3 access codes available for today",
                   modalTypeCode: "Type access code",
@@ -1299,6 +1443,14 @@
                     "Predicting fox movements...",
                     "CROSSING THE ROAD...",
                     "SUCCESS: Safe path determined.",
+                  ],
+                  slotSignalConsoleMessages: [
+                    "Initializing slot algorithm v2.1...",
+                    "Analyzing reel probabilities...",
+                    "Calculating bonus trigger frequency...",
+                    "Cross-referencing RTP data...",
+                    "LOCKING SPIN COUNT...",
+                    "SUCCESS: Optimal spin count for bonus acquired.",
                   ],
                   fakeMessages: [
                     "who tried penalty? any luck",
@@ -1523,94 +1675,229 @@
                 let chickenState = { difficulty: "Easy", currentStep: 0 };
                 const STOVE_WIDTH = 128;
 
+                function applyVideoConfigs() {
+                  for (const gameKey in VIDEO_CONFIG) {
+                    const gameVideos = VIDEO_CONFIG[gameKey];
+                    if (gameVideos.findGame && gameVideos.findGame.length > 0) {
+                      const webIframe = document.getElementById(
+                        `${gameKey}-find-game-web-iframe`
+                      );
+                      if (webIframe && gameVideos.findGame[0]) {
+                        webIframe.src = gameVideos.findGame[0].url;
+                      }
+
+                      const appIframe = document.getElementById(
+                        `${gameKey}-find-game-app-iframe`
+                      );
+                      if (appIframe && gameVideos.findGame[1]) {
+                        appIframe.src = gameVideos.findGame[1].url;
+                      }
+                    }
+                  }
+                }
+
+                generateAndInsertSlotCards();
+                applyCardConfigs();
+                applyVideoConfigs();
+
                 if (!FEATURE_FLAGS.enableLottery) {
                   const lotteryBtn = document.getElementById("lotteryBtn");
                   if (lotteryBtn) lotteryBtn.style.display = "none";
+                }
+
+                function applyUnlocks() {
+                  const vipUnlocked =
+                    localStorage.getItem("vipUnlocked") === "true";
+                  const slotUnlocked =
+                    localStorage.getItem("slotUnlocked") === "true";
+
+                  const vipCard = document.querySelector(
+                    '[data-card-type="vip"]'
+                  );
+                  if (vipCard && vipUnlocked) {
+                    vipCard.classList.remove("locked-card");
+                    const bannerContainer =
+                      vipCard.querySelector(".banner-container");
+                    if (bannerContainer) bannerContainer.remove();
+                    const button = vipCard.querySelector("button");
+                    button.disabled = false;
+                    button.classList.remove(
+                      "bg-gray-600",
+                      "text-gray-400",
+                      "cursor-not-allowed"
+                    );
+                    button.classList.add(
+                      "bg-yellow-500",
+                      "text-black",
+                      "hover:bg-yellow-400",
+                      "active:scale-95",
+                      "activate-btn"
+                    );
+                    button.textContent = "ENTER VIP";
+                  }
+
+                  const slotCards = document.querySelectorAll(
+                    '[data-card-type="slot"]'
+                  );
+                  slotCards.forEach((slotCard) => {
+                    if (slotCard && slotUnlocked) {
+                      slotCard.classList.remove("locked-card");
+                      const bannerContainer =
+                        slotCard.querySelector(".banner-container");
+                      if (bannerContainer) bannerContainer.remove();
+                      const button = slotCard.querySelector("button");
+                      button.disabled = false;
+                      button.classList.remove(
+                        "bg-gray-600",
+                        "text-gray-400",
+                        "cursor-not-allowed"
+                      );
+                      button.classList.add(
+                        "bg-fuchsia-500",
+                        "text-black",
+                        "hover:bg-fuchsia-400",
+                        "active:scale-95",
+                        "activate-btn"
+                      );
+                      button.textContent = "ACTIVATE";
+                    }
+                  });
                 }
 
                 function checkAccessSession() {
                   const e = localStorage.getItem("accessGrantedTimestamp");
                   if (e) {
                     const t = new Date().getTime();
-                    t - parseInt(e) < 144e5
-                      ? (mainContent.classList.add("hidden"),
-                        appContainer.classList.remove("hidden"))
-                      : localStorage.removeItem("accessGrantedTimestamp");
+                    if (t - parseInt(e) < 144e5) {
+                      mainContent.classList.add("hidden");
+                      appContainer.classList.remove("hidden");
+                      applyUnlocks();
+                    } else {
+                      localStorage.removeItem("accessGrantedTimestamp");
+                      localStorage.removeItem("vipUnlocked");
+                      localStorage.removeItem("slotUnlocked");
+                    }
                   }
                 }
                 const handleValidation = () => {
-                    if ("2282" === accessCodeInput.value) {
-                      const e = new Date().getTime();
-                      localStorage.setItem("accessGrantedTimestamp", e),
-                        formContent.classList.add("hidden"),
-                        statusContent.classList.remove("hidden"),
-                        (statusText.textContent = T.decryptingSignals),
-                        setTimeout(() => {
-                          (statusText.textContent = T.accessGranted),
-                            statusText.classList.remove("animate-pulse"),
-                            setTimeout(() => {
-                              closeModal(),
-                                mainContent.classList.add("hidden"),
-                                appContainer.classList.remove("hidden");
-                              if (
-                                !sessionStorage.getItem("promoShownThisSession")
-                              ) {
-                                showPromoModal(),
-                                  sessionStorage.setItem(
-                                    "promoShownThisSession",
-                                    "true"
-                                  );
-                              }
-                              startPromoInterval();
-                            }, 1e3);
-                        }, 2500);
-                    } else
-                      (errorMessage.textContent = T.accessDenied),
-                        (accessCodeInput.value = ""),
-                        modalContainer.classList.add("shake"),
-                        setTimeout(
-                          () => modalContainer.classList.remove("shake"),
-                          500
-                        );
-                  },
-                  openModal = () => {
-                    accessModal.classList.remove("hidden"),
-                      setTimeout(() => accessCodeInput.focus(), 50);
-                  },
-                  closeModal = () => {
-                    accessModal.classList.add("hidden"),
+                  const code = accessCodeInput.value.trim();
+                  let accessGranted = false;
+
+                  localStorage.removeItem("vipUnlocked");
+                  localStorage.removeItem("slotUnlocked");
+
+                  if (code === "1337") {
+                    localStorage.setItem("slotUnlocked", "true");
+                    accessGranted = true;
+                  } else if (code === "8564") {
+                    localStorage.setItem("vipUnlocked", "true");
+                    accessGranted = true;
+                  } else if (code === "2282") {
+                    accessGranted = true;
+                  }
+
+                  if (accessGranted) {
+                    localStorage.setItem(
+                      "accessGrantedTimestamp",
+                      new Date().getTime()
+                    );
+                    formContent.classList.add("hidden");
+                    statusContent.classList.remove("hidden");
+                    statusText.textContent = T.decryptingSignals;
+                    setTimeout(() => {
+                      statusText.textContent = T.accessGranted;
+                      statusText.classList.remove("animate-pulse");
                       setTimeout(() => {
-                        formContent.classList.remove("hidden"),
-                          statusContent.classList.add("hidden"),
-                          statusText.classList.add("animate-pulse"),
-                          (errorMessage.textContent = ""),
-                          (accessCodeInput.value = "");
-                      }, 300);
-                  };
-                function showGameView(e) {
+                        closeModal();
+                        mainContent.classList.add("hidden");
+                        appContainer.classList.remove("hidden");
+                        applyUnlocks();
+                        if (!sessionStorage.getItem("promoShownThisSession")) {
+                          showPromoModal();
+                          sessionStorage.setItem(
+                            "promoShownThisSession",
+                            "true"
+                          );
+                        }
+                        startPromoInterval();
+                      }, 1e3);
+                    }, 2500);
+                  } else {
+                    errorMessage.textContent = T.accessDenied;
+                    accessCodeInput.value = "";
+                    modalContainer.classList.add("shake");
+                    setTimeout(
+                      () => modalContainer.classList.remove("shake"),
+                      500
+                    );
+                  }
+                };
+                const openModal = () => {
+                  accessModal.classList.remove("hidden");
+                  setTimeout(() => accessCodeInput.focus(), 50);
+                };
+                const closeModal = () => {
+                  accessModal.classList.add("hidden");
+                  setTimeout(() => {
+                    formContent.classList.remove("hidden");
+                    statusContent.classList.add("hidden");
+                    statusText.classList.add("animate-pulse");
+                    errorMessage.textContent = "";
+                    accessCodeInput.value = "";
+                  }, 300);
+                };
+                function showGameView(gameId) {
                   signalsSection.classList.add("hidden");
                   gameView.classList.remove("hidden");
                   document
                     .querySelectorAll(".game-screen")
                     .forEach((t) => t.classList.add("hidden"));
-                  const t = document.getElementById(`game-screen-${e}`);
-                  if (t) {
-                    t.classList.remove("hidden");
-                    t.classList.add("flex"); // Ensure it's a flex container
+
+                  const cardConfig = CARDS_CONFIG.find((c) => c.id === gameId);
+                  if (!cardConfig) return;
+
+                  const gameScreenId = gameId.startsWith("slot-")
+                    ? "game-screen-slot"
+                    : `game-screen-${gameId}`;
+                  const gameScreen = document.getElementById(gameScreenId);
+
+                  if (gameScreen) {
+                    const gameTitleEl = gameScreen.querySelector(".game-title");
+                    if (gameTitleEl) {
+                      gameTitleEl.textContent = cardConfig.title;
+                    }
+
+                    gameScreen.classList.remove("hidden");
+                    gameScreen.classList.add("flex");
+
+                    const videoSection = gameScreen.querySelector(
+                      ".video-tutorial-section"
+                    );
+                    const predictorSection =
+                      gameScreen.querySelector(".predictor-section");
+
+                    if (videoSection && predictorSection) {
+                      if (cardConfig.showFindGame) {
+                        videoSection.classList.remove("hidden");
+                        predictorSection.classList.add("hidden");
+                      } else {
+                        videoSection.classList.add("hidden");
+                        predictorSection.classList.remove("hidden");
+                        predictorSection.classList.add("flex");
+                      }
+                    }
                   }
-                  "aviator" === e
-                    ? resetAviatorGame(true)
-                    : "mines" === e
-                    ? resetMinesGame(true)
-                    : "penalty" === e
-                    ? resetPenaltyGame(true)
-                    : "apple" === e
-                    ? resetAppleGame(true)
-                    : "chicken" === e && resetChickenGame(true);
+
+                  if (gameId === "aviator") resetAviatorGame();
+                  else if (gameId === "mines") resetMinesGame();
+                  else if (gameId === "penalty") resetPenaltyGame();
+                  else if (gameId === "apple") resetAppleGame();
+                  else if (gameId === "chicken") resetChickenGame();
+                  else if (gameId.startsWith("slot-")) resetSlotGame();
                 }
                 function showSignalsView() {
-                  gameView.classList.add("hidden"),
-                    signalsSection.classList.remove("hidden");
+                  gameView.classList.add("hidden");
+                  signalsSection.classList.remove("hidden");
                 }
                 function runConsoleSimulation(e, t, n) {
                   if (!e) return;
@@ -1630,20 +1917,8 @@
                     } else clearInterval(s), n && n();
                   }, 300);
                 }
-                function resetGameViews(gameScreenElement) {
-                  if (gameScreenElement) {
-                    const videoSection = gameScreenElement.querySelector(
-                      ".video-tutorial-section"
-                    );
-                    const predictorSection =
-                      gameScreenElement.querySelector(".predictor-section");
-                    if (videoSection && predictorSection) {
-                      videoSection.classList.remove("hidden");
-                      predictorSection.classList.add("hidden");
-                    }
-                  }
-                }
-                function resetAviatorGame(isFullReset = false) {
+
+                function resetAviatorGame() {
                   clearInterval(multiplierAnimation);
                   aviatorMultiplier.textContent = "x1.00";
                   aviatorMultiplier.classList.remove(
@@ -1676,11 +1951,6 @@
                       "text-black",
                       "hover:bg-green-500",
                       "w-full"
-                    );
-                  }
-                  if (isFullReset) {
-                    resetGameViews(
-                      document.getElementById("game-screen-aviator")
                     );
                   }
                 }
@@ -1744,7 +2014,7 @@
                   resetAviatorGame(false)
                 );
 
-                function resetMinesGame(isFullReset = false) {
+                function resetMinesGame() {
                   const gridSizeSelect = document.querySelector(
                     '[data-select-id="grid-size"] .selected-option'
                   );
@@ -1783,12 +2053,6 @@
                       "text-black",
                       "hover:bg-green-500",
                       "w-full"
-                    );
-                  }
-
-                  if (isFullReset) {
-                    resetGameViews(
-                      document.getElementById("game-screen-mines")
                     );
                   }
                 }
@@ -1861,7 +2125,7 @@
                   resetMinesGame(false)
                 );
 
-                function resetPenaltyGame(isFullReset = false) {
+                function resetPenaltyGame() {
                   penaltyTargetZones.forEach((e) => {
                     e.classList.remove("highlight"), (e.style.transform = "");
                   });
@@ -1893,12 +2157,6 @@
                       "text-black",
                       "hover:bg-green-500",
                       "w-full"
-                    );
-                  }
-
-                  if (isFullReset) {
-                    resetGameViews(
-                      document.getElementById("game-screen-penalty")
                     );
                   }
                 }
@@ -1968,7 +2226,7 @@
                   resetPenaltyGame(false)
                 );
 
-                function resetAppleGame(isFullReset = false) {
+                function resetAppleGame() {
                   appleSignalDisplay.textContent = "#";
                   appleSignalDisplay.classList.remove("number-signal-display");
                   appleBetSuggestion.textContent = "";
@@ -1999,12 +2257,6 @@
                       "text-black",
                       "hover:bg-green-500",
                       "w-full"
-                    );
-                  }
-
-                  if (isFullReset) {
-                    resetGameViews(
-                      document.getElementById("game-screen-apple")
                     );
                   }
                 }
@@ -2069,7 +2321,7 @@
                   resetAppleGame(false)
                 );
 
-                function resetChickenGame(isFullReset = false) {
+                function resetChickenGame() {
                   const difficultySelect = document.querySelector(
                     '[data-select-id="chicken-difficulty"] .selected-option'
                   );
@@ -2104,12 +2356,6 @@
                       "text-black",
                       "hover:bg-green-500",
                       "w-full"
-                    );
-                  }
-
-                  if (isFullReset) {
-                    resetGameViews(
-                      document.getElementById("game-screen-chicken")
                     );
                   }
                 }
@@ -2216,6 +2462,157 @@
                 chickenGetAnotherBtn.addEventListener("click", () =>
                   resetChickenGame(false)
                 );
+                function resetSlotGame() {
+                  const gameScreen =
+                    document.getElementById("game-screen-slot");
+                  if (!gameScreen) return;
+
+                  const slotNumber = gameScreen.querySelector(".slot-number");
+                  const slotBetSuggestion = gameScreen.querySelector(
+                    ".bet-suggestion-text"
+                  );
+                  const slotConsoleOutput =
+                    gameScreen.querySelector(".game-console");
+                  const slotActionsInitial = gameScreen.querySelector(
+                    ".slot-actions-initial"
+                  );
+                  const slotGetAnotherBtn = gameScreen.querySelector(
+                    ".slot-get-another-btn"
+                  );
+                  const slotGetBetBtn =
+                    gameScreen.querySelector(".slot-get-bet-btn");
+                  const slotGetSignalBtn = gameScreen.querySelector(
+                    ".slot-get-signal-btn"
+                  );
+
+                  slotNumber.textContent = "#";
+                  slotBetSuggestion.textContent = "";
+                  if (
+                    slotConsoleOutput &&
+                    slotConsoleOutput.querySelector("div")
+                  ) {
+                    slotConsoleOutput.querySelector("div").innerHTML = "";
+                  }
+                  slotActionsInitial.classList.remove("hidden");
+                  slotGetAnotherBtn.classList.add("hidden");
+
+                  if (FEATURE_FLAGS.enableBetStep) {
+                    slotGetBetBtn.style.display = "";
+                    slotGetBetBtn.disabled = false;
+                    slotGetBetBtn.classList.remove("btn-disabled");
+                    slotGetSignalBtn.disabled = true;
+                    slotGetSignalBtn.classList.add("btn-disabled");
+                    slotGetSignalBtn.classList.remove(
+                      "bg-green-600",
+                      "text-black",
+                      "hover:bg-green-500"
+                    );
+                  } else {
+                    slotGetBetBtn.style.display = "none";
+                    slotGetSignalBtn.disabled = false;
+                    slotGetSignalBtn.classList.remove("btn-disabled");
+                    slotGetSignalBtn.classList.add(
+                      "bg-green-600",
+                      "text-black",
+                      "hover:bg-green-500",
+                      "w-full"
+                    );
+                  }
+                }
+
+                gameView.addEventListener("click", (e) => {
+                  const target = e.target;
+                  const gameScreen = target.closest("#game-screen-slot");
+                  if (!gameScreen) return;
+
+                  if (target.matches(".slot-get-bet-btn")) {
+                    const slotGetBetBtn = target;
+                    const slotBetSuggestion = gameScreen.querySelector(
+                      ".bet-suggestion-text"
+                    );
+                    const slotConsoleOutput =
+                      gameScreen.querySelector(".game-console");
+                    const slotGetSignalBtn = gameScreen.querySelector(
+                      ".slot-get-signal-btn"
+                    );
+
+                    slotGetBetBtn.disabled = true;
+                    slotGetBetBtn.classList.add("btn-disabled");
+                    slotBetSuggestion.textContent = T.analyzingData;
+                    runConsoleSimulation(
+                      slotConsoleOutput,
+                      T.betConsoleMessages,
+                      () => {
+                        const minBet = CUSTOM_CONFIG.minBet;
+                        const maxBet = CUSTOM_CONFIG.maxBet;
+                        const currency = CUSTOM_CONFIG.currency;
+                        slotBetSuggestion.textContent = T.betSuggestion
+                          .replace("{minBet}", minBet)
+                          .replace("{maxBet}", maxBet)
+                          .replace(/{currency}/g, currency);
+                        slotGetSignalBtn.disabled = false;
+                        slotGetSignalBtn.classList.remove("btn-disabled");
+                        slotGetSignalBtn.classList.add(
+                          "bg-green-600",
+                          "text-black",
+                          "hover:bg-green-500"
+                        );
+                      }
+                    );
+                  }
+
+                  if (target.matches(".slot-get-signal-btn")) {
+                    const slotGetSignalBtn = target;
+                    if (slotGetSignalBtn.disabled) return;
+
+                    const slotBetSuggestion = gameScreen.querySelector(
+                      ".bet-suggestion-text"
+                    );
+                    const slotConsoleOutput =
+                      gameScreen.querySelector(".game-console");
+                    const slotNumber = gameScreen.querySelector(".slot-number");
+                    const slotActionsInitial = gameScreen.querySelector(
+                      ".slot-actions-initial"
+                    );
+                    const slotGetAnotherBtn = gameScreen.querySelector(
+                      ".slot-get-another-btn"
+                    );
+
+                    slotGetSignalBtn.disabled = true;
+                    slotGetSignalBtn.classList.add("btn-disabled");
+                    slotBetSuggestion.textContent = T.analyzingData;
+
+                    runConsoleSimulation(
+                      slotConsoleOutput,
+                      T.slotSignalConsoleMessages,
+                      () => {
+                        let spinCount = 0;
+                        const animationInterval = setInterval(() => {
+                          spinCount = Math.floor(Math.random() * 16) + 5;
+                          if (slotNumber) slotNumber.textContent = spinCount;
+                        }, 100);
+
+                        setTimeout(() => {
+                          clearInterval(animationInterval);
+                          const finalSpinCount =
+                            Math.floor(Math.random() * 16) + 5;
+                          if (slotNumber)
+                            slotNumber.textContent = finalSpinCount;
+                          if (slotBetSuggestion)
+                            slotBetSuggestion.textContent = `AI SIGNAL: SPIN ${finalSpinCount} TIMES FOR BONUS`;
+                          if (slotActionsInitial)
+                            slotActionsInitial.classList.add("hidden");
+                          if (slotGetAnotherBtn)
+                            slotGetAnotherBtn.classList.remove("hidden");
+                        }, 2500);
+                      }
+                    );
+                  }
+
+                  if (target.matches(".slot-get-another-btn")) {
+                    resetSlotGame();
+                  }
+                });
 
                 function generateRandomUsername() {
                   return `username${Math.floor(9e4 * Math.random()) + 1e4}`;
@@ -2338,34 +2735,39 @@
                     baseWinRate: 90,
                     rangeWinRate: 5,
                   },
-                  "stats-vip1": {
+                  "stats-vip": {
                     baseSignals: 1e3,
                     rangeSignals: 1e3,
                     baseWinRate: 98,
                     rangeWinRate: 1,
                   },
-                  "stats-vip2": {
-                    baseSignals: 1e3,
-                    rangeSignals: 1e3,
-                    baseWinRate: 98,
-                    rangeWinRate: 1,
+                  "stats-slot": {
+                    baseSignals: 1200,
+                    rangeSignals: 800,
+                    baseWinRate: 97,
+                    rangeWinRate: 2,
                   },
                 };
                 function updateSignalStats() {
-                  for (const e in statsConfig) {
-                    const t = document.getElementById(e);
-                    if (t) {
-                      const n = statsConfig[e],
-                        o =
-                          n.baseSignals +
-                          Math.floor(Math.random() * n.rangeSignals),
-                        a = (
-                          n.baseWinRate +
-                          Math.random() * n.rangeWinRate
-                        ).toFixed(1);
-                      t.innerHTML = `${T.signalsPerSec} <span class="text-green-400">${o}</span><br>${T.successRate} <span class="font-bold text-lime-300">${a}%</span>`;
+                  document.querySelectorAll('[id^="stats-"]').forEach((p) => {
+                    const id = p.id;
+                    let config = statsConfig[id];
+                    if (!config) {
+                      if (id.startsWith("stats-slot-")) {
+                        config = statsConfig["stats-slot"];
+                      }
                     }
-                  }
+                    if (config) {
+                      const signals =
+                        config.baseSignals +
+                        Math.floor(Math.random() * config.rangeSignals);
+                      const winRate = (
+                        config.baseWinRate +
+                        Math.random() * config.rangeWinRate
+                      ).toFixed(1);
+                      p.innerHTML = `${T.signalsPerSec} <span class="text-green-400">${signals}</span><br>${T.successRate} <span class="font-bold text-lime-300">${winRate}%</span>`;
+                    }
+                  });
                 }
                 const liveFeedContainer = document.getElementById(
                     "live-feed-container"
@@ -2375,7 +2777,10 @@
                       game: "aviator",
                       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBdX8SuaC1Ws7ZYuCVQstQ4qRi9A_3SWujg&s",
                     },
-                    { game: "mines", icon: "https://rotativka.com/en/wp-content/uploads/sites/3/2021/06/Mines-Demo.jpg" },
+                    {
+                      game: "mines",
+                      icon: "https://rotativka.com/en/wp-content/uploads/sites/3/2021/06/Mines-Demo.jpg",
+                    },
                     {
                       game: "penalty",
                       icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThYP5CGxc52hWd4ToMHI8MIJhun5BEjHh5LQ&s",
@@ -2470,7 +2875,7 @@
                     ) {
                       showPromoModal();
                     }
-                  }, 600000); // 10 minutes
+                  }, 300000); // 5 minutes
                 }
 
                 if (closePromoModalBtn)
@@ -2527,10 +2932,8 @@
                 let shimmerAngle = 0;
                 let animationFrameId;
 
-                // Dynamic sizing variables
                 let centerX, centerY, radius;
 
-                // Confetti variables
                 let confettiParticles = [];
                 let confettiAnimationId;
 
@@ -2656,7 +3059,7 @@
                     confettiParticles.forEach((p, index) => {
                       p.x += p.vx;
                       p.y += p.vy;
-                      p.vy += 0.4; // gravity
+                      p.vy += 0.4;
                       p.alpha -= 0.005;
 
                       if (p.alpha <= 0) {
@@ -2692,7 +3095,6 @@
                   const code = lotteryCodeInput.value.trim();
                   if (!code) {
                     lotteryErrorMessage.textContent = "Please enter the code.";
-                    // Добавим тряску для наглядности
                     const modalBody = lotteryModal.querySelector(
                       ".bg-\\[\\#0d0d0d\\]"
                     );
@@ -2706,7 +3108,6 @@
                     return;
                   }
 
-                  // 2. Проверяем, был ли код использован ранее.
                   let usedCodes =
                     JSON.parse(sessionStorage.getItem("usedLotteryCodes")) ||
                     [];
@@ -2715,7 +3116,6 @@
                     return;
                   }
 
-                  // 3. Проверяем, валиден ли код. Если нет - выходим.
                   if (!lotteryCodes.hasOwnProperty(code)) {
                     lotteryErrorMessage.textContent = "Wrong code.";
                     const modalBody = lotteryModal.querySelector(
@@ -2741,38 +3141,20 @@
                       JSON.stringify(usedCodes)
                     );
                   } else {
-                    const nothingIndexes = prizes
-                      .map((p, i) =>
-                        p.text.toUpperCase() === "NOTHING" ? i : -1
-                      )
-                      .filter((i) => i !== -1);
-                    if (nothingIndexes.length > 0) {
-                      targetPrizeIndex =
-                        nothingIndexes[
-                          Math.floor(Math.random() * nothingIndexes.length)
-                        ];
-                    } else {
-                      targetPrizeIndex = Math.floor(
-                        Math.random() * prizes.length
-                      ); // fallback to random prize if no "NOTHING"
-                    }
-                    if (code) {
-                      // Only show error if a code was entered and it was invalid
-                      lotteryErrorMessage.textContent = "Invalid code.";
-                      if (lotteryModal) {
-                        const modalBody = lotteryModal.querySelector(
-                          ".bg-\\[\\#0d0d0d\\]"
+                    lotteryErrorMessage.textContent = "Invalid code.";
+                    if (lotteryModal) {
+                      const modalBody = lotteryModal.querySelector(
+                        ".bg-\\[\\#0d0d0d\\]"
+                      );
+                      if (modalBody) {
+                        modalBody.classList.add("shake");
+                        setTimeout(
+                          () => modalBody.classList.remove("shake"),
+                          500
                         );
-                        if (modalBody) {
-                          modalBody.classList.add("shake");
-                          setTimeout(
-                            () => modalBody.classList.remove("shake"),
-                            500
-                          );
-                        }
                       }
-                      return; // Stop spin for invalid code
                     }
+                    return;
                   }
 
                   cancelAnimationFrame(animationFrameId);
@@ -2926,8 +3308,20 @@
                 // --- LOTTERY SCRIPT END ---
 
                 const allCustomSelects =
-                    document.querySelectorAll("[data-select-id]"),
-                  activateBtns = document.querySelectorAll(".activate-btn");
+                  document.querySelectorAll("[data-select-id]");
+
+                signalsSection.addEventListener("click", (t) => {
+                  const activateBtn = t.target.closest(".activate-btn");
+                  if (activateBtn) {
+                    const n = activateBtn.closest(".signal-card");
+                    if (n.classList.contains("locked-card")) return;
+                    const o = n.dataset.game;
+                    if (o) {
+                      showGameView(o);
+                    }
+                  }
+                });
+
                 allCustomSelects.forEach((e) => {
                   const t = e.querySelector(".custom-select-trigger"),
                     n = e.querySelector(".custom-select-options"),
@@ -2984,45 +3378,37 @@
                   }),
                   logoutBtn.addEventListener("click", () => {
                     localStorage.removeItem("accessGrantedTimestamp");
-                    sessionStorage.removeItem("promoShownThisSession"); // Clear session flag
-                    clearInterval(promoInterval); // Stop the timer
-                    appContainer.classList.add("hidden");
-                    mainContent.classList.remove("hidden");
-                    gameView.classList.add("hidden");
-                    signalsSection.classList.remove("hidden");
+                    localStorage.removeItem("vipUnlocked");
+                    localStorage.removeItem("slotUnlocked");
+                    sessionStorage.removeItem("promoShownThisSession");
+                    clearInterval(promoInterval);
+
+                    window.location.reload();
                   });
-                activateBtns.forEach((e) => {
-                  e.addEventListener("click", (t) => {
-                    const n = t.target.closest(".signal-card");
-                    if (n.classList.contains("locked-card")) return;
-                    const o = n.dataset.game;
-                    showGameView(o);
-                  });
-                }),
-                  document
-                    .querySelectorAll(".back-to-signals-btn")
-                    .forEach((e) => {
-                      e.addEventListener("click", showSignalsView);
-                    });
 
                 document
-                  .querySelectorAll(".i-found-game-btn")
-                  .forEach((btn) => {
-                    btn.addEventListener("click", (e) => {
-                      const gameScreen = e.target.closest(".game-screen");
-                      if (gameScreen) {
-                        const videoSection = gameScreen.querySelector(
-                          ".video-tutorial-section"
-                        );
-                        const predictorSection =
-                          gameScreen.querySelector(".predictor-section");
-                        if (videoSection && predictorSection) {
-                          videoSection.classList.add("hidden");
-                          predictorSection.classList.remove("hidden");
-                        }
-                      }
-                    });
+                  .querySelectorAll(".back-to-signals-btn")
+                  .forEach((e) => {
+                    e.addEventListener("click", showSignalsView);
                   });
+
+                gameView.addEventListener("click", (e) => {
+                  if (e.target.matches(".i-found-game-btn")) {
+                    const gameScreen = e.target.closest(".game-screen");
+                    if (gameScreen) {
+                      const videoSection = gameScreen.querySelector(
+                        ".video-tutorial-section"
+                      );
+                      const predictorSection =
+                        gameScreen.querySelector(".predictor-section");
+                      if (videoSection && predictorSection) {
+                        videoSection.classList.add("hidden");
+                        predictorSection.classList.remove("hidden");
+                        predictorSection.classList.add("flex");
+                      }
+                    }
+                  }
+                });
 
                 const videoModal = document.getElementById("videoModal"),
                   closeVideoModalBtn =
@@ -3059,7 +3445,7 @@
                       n = e.dataset.gameKey;
                     t &&
                       n &&
-                      ((currentVideoList = VIDEO_CONFIG[n][t]),
+                      ((currentVideoList = VIDEO_CONFIG[n]?.[t]),
                       currentVideoList &&
                         currentVideoList.length > 0 &&
                         ((currentVideoIndex = 0),
